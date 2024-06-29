@@ -121,6 +121,21 @@ body {
 }
 
 /* Shopping Cart */
+#shopping-cart-button {
+  position: relative;
+}
+
+#shopping-cart-button .quantity-badge {
+  display: inline-block;
+  padding: 1px 5px;
+  background-color: red;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  position: absolute;
+  top: 0;
+  right: -10px;
+}
+
 .shopping-carts {
   position: absolute;
   top: 100%;
@@ -148,26 +163,88 @@ body {
 }
 
 .shopping-carts img {
-  height: 6rem;
+  height: 4rem;
+  border-radius: 50%;
 }
 
 .shopping-carts .cart-item h3 {
-  font-size: 1.6rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
 }
 
 .shopping-carts .item-price {
   font-size: 1.2rem;
 }
 
-.shopping-carts .delete-item {
-  position: absolute;
-  right: 1rem;
+.shopping-carts .cart-item #add,
+.shopping-carts .cart-item #remove {
+  display: inline-block;
+  padding: 2px 5px;
+  cursor: pointer;
+  margin: 0 8px;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.shopping-carts h4 {
+  font-size: 1.6rem;
+  margin-top: -1rem;
+  text-align: center;
+}
+
+/* Form Checkout */
+.form-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border-top: 1px dashed black;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+.form-container h5 {
+  text-align: center;
+  font-size: 1rem;
+}
+
+.form-container form {
+  width: 100%;
+  text-align: center;
+}
+
+.form-container label {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.form-container span {
+  text-align: right;
+}
+
+.form-container input {
+  background-color: #ddd;
+  padding: 5px;
+  width: 70%;
+  font-size: 1rem;
+}
+
+.form-container .checkout-button {
+  padding: 6px 14px;
+  background-color: royalblue;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 20px;
+  margin: 1rem auto;
   cursor: pointer;
 }
 
-.shopping-carts .delete-item:hover {
-  color: var(--primary);
+.form-container .checkout-button.disabled {
+  background-color: #999;
+  cursor: not-allowed;
 }
 
 /* Hero Section */
@@ -389,11 +466,6 @@ body {
   font-weight: bold;
 }
 
-.products .product-price span {
-  font-size: 1rem;
-  text-decoration: line-through;
-  font-weight: lighter;
-}
 /* Contact section */
 .contact .row {
   display: flex;
