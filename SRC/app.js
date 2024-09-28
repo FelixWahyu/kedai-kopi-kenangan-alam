@@ -60,6 +60,7 @@ document.addEventListener("alpine:init", () => {
   });
 });
 
+// button validation untuk cheackout
 const checkOutButton = document.querySelector(".checkout-button");
 checkOutButton.disabled = true;
 
@@ -85,7 +86,7 @@ checkOutButton.addEventListener("click", function (e) {
   const data = new URLSearchParams(formData);
   const objData = Object.fromEntries(data);
   const message = formatMessage(objData);
-  window.open("http://wa.me/62[no_hpSales]?text" + encodeURIComponent(message));
+  window.open("http://wa.me/6285869906592?text=" + encodeURIComponent(message));
 });
 
 // format kirim pesan Whatsapp
@@ -95,7 +96,9 @@ const formatMessage = (obj) => {
   Email: ${obj.email}
   No HP: ${obj.phone}
   Data pesanan
-  ${JSON.parse(obj.items).map((item) => `${item.name} (${item.quantity} x ${rupiah(item.total)})\n`)}
+  ${JSON.parse(obj.items).map(
+    (item) => `${item.name} (${item.quantity} x ${rupiah(item.total)})\n`
+  )}
   TOTAL: ${rupiah(obj.total)}
   Terimakasih.`;
 };
