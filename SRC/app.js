@@ -80,13 +80,30 @@ form.addEventListener("keyup", function () {
 });
 
 // Kirim data Ketika klik checkout button
+// tambahkan fungsi async jika menggunakan midtrans via website pembayaran
 checkOutButton.addEventListener("click", function (e) {
   e.preventDefault();
   const formData = new FormData(form);
   const data = new URLSearchParams(formData);
   const objData = Object.fromEntries(data);
+
+  // kirim pesan Whatsapp dan bayar lewat paymenlink dari owner
   const message = formatMessage(objData);
-  window.open("http://wa.me/6285869906592?text=" + encodeURIComponent(message));
+  window.open("http://wa.me/62[no wa]?text=" + encodeURIComponent(message));
+
+  // Paymen Getway menggunakan midtrans lewat website
+  // try {
+  //   const response = await fetch("php/placeOrder.php", {
+  //     method: "POST",
+  //     body: data,
+  //   });
+
+  //   const token = await response.text();
+  //   // console.log(token);
+  //   window.snap.pay(token);
+  // } catch (error) {
+  //   console.log(error.message);
+  // }
 });
 
 // format kirim pesan Whatsapp
@@ -96,9 +113,7 @@ const formatMessage = (obj) => {
   Email: ${obj.email}
   No HP: ${obj.phone}
   Data pesanan
-  ${JSON.parse(obj.items).map(
-    (item) => `${item.name} (${item.quantity} x ${rupiah(item.total)})\n`
-  )}
+  ${JSON.parse(obj.items).map((item) => `${item.name} (${item.quantity} x ${rupiah(item.total)})\n`)}
   TOTAL: ${rupiah(obj.total)}
   Terimakasih.`;
 };
